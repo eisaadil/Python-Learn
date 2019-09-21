@@ -91,4 +91,4 @@ n.insertElementK(4, 4)
 n.deleteElementK(4)
 n.deleteElement(2)
 print(n.noOfElements())
-print(n)
+print(n) #[0,1,8,3]
