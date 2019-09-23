@@ -76,12 +76,40 @@ class LinkedList():
             p.link = Node(val, t)
         else:
             p.link = Node(val)
+    
+    def reverseList(self):
+        head = self.root
+
+        if (not head or not head.link): #For zero or one elements
+            self.root = head #return null or that single node
+            return
+
+        t = head #first element
+        n = t.link #second element
+        new = n.link #third element
+        n.link = t
+        t.link = None #first element's link is None because it will be the last element
+
+        if(not new): #For two elements
+            self.root = n
+            return
+        
+        while(1):
+            t = n
+            if (new): n = new
+            if (n and n.link):
+                new = n.link
+                n.link = t
+            else:
+                n.link = t
+                self.root = n
+                return
 
 n = LinkedList()
 n.addElement(2)
 n.addElement(4)
-n.addElement(6)
-n.addElement(8)
+n.addElement(3)
+n.addElement(5)
 n.deleteElement(6)
 n.deleteElement(4)
 n.insertElementK(2, 3)
@@ -90,5 +118,6 @@ n.insertElementK(0, 0)
 n.insertElementK(4, 4)
 n.deleteElementK(4)
 n.deleteElement(2)
+n.reverseList()
 print(n.noOfElements())
 print(n) #[0,1,8,3]
